@@ -1,4 +1,7 @@
 #!/usr/bin/python
+# Copyright 2017, Clifford (Damn) Wells <cliff.wells@gmail.com>
+# This code is released under the Modified BSD License.
+# See LICENSE for details.
 
 from __future__ import print_function
 

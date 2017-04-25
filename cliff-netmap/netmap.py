@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Python 3 Compat
+# Copyright 2017, Clifford (Damn) Wells <cliff.wells@gmail.com>
+# This code is released under the Modified BSD License.
+# See LICENSE for details.
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
