@@ -1,0 +1,5 @@
+click>=4.0
+pem>=15
+acme>=0.11
+blessings>=1.4
+

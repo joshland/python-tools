@@ -1,6 +1,14 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# Python 3 Compat
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+from __future__ import unicode_literals
 
 import os
+import sys
 import yaml
 import glob
 import re
@@ -15,6 +23,7 @@ import networkx as nx
 from networkx.drawing.nx_agraph import graphviz_layout
 import matplotlib.pyplot as plt
 
+APP=os.path.basename(sys.argv[0])
 
 LAYOUTS = [ 'spring', 'neato', 'fdp', 'sfdp', 'circo', 'twopi' ]
 UNKNOWN = '#FFA500'
@@ -217,13 +226,13 @@ def main(datadir, exclude_ports, include_ports, known_hosts, node_scale, layout,
     =============
     Map database connections across two domains:
 
-    ./graph.py -p 5432,3306 path/to/domain1.com path/to/domain2.com -a
+    ./%(APP)s -p 5432,3306 path/to/domain1.com path/to/domain2.com -a
 
     Map ports up to 1024, except for ssh:
 
-    ./graph.py -p 1-1024 -x 22 domain1.com
+    ./%(APP)s -p 1-1024 -x 22 domain1.com
 
-    '''
+    ''' % locals()
 
     def parse_range(s):
         ''' convert string of the form 1,2,3-7,20 into list of integers
@@ -318,7 +327,7 @@ def main(datadir, exclude_ports, include_ports, known_hosts, node_scale, layout,
         hostdata[host]['remote'].update(find_refs(hostdata[host]['local'], hostdata))
 
     if output_yaml:
-        print yaml.safe_dump(hostdata, default_flow_style=False)
+        print(yaml.safe_dump(hostdata, default_flow_style=False))
 
     domains = [ d.strip('/').split('/')[-1] for d in datadir ]
     graph(hostdata, domains, node_scale, attractors, layout)

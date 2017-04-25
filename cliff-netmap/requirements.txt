@@ -1,0 +1,4 @@
+click>=4.0
+networkx>=1.10
+matplotlib>=1.9
+click-log>=0.1
